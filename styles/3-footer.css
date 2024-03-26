@@ -1,0 +1,48 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+    border-top: 1px solid #CCCCCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 3-footer.css */
+
+/* Style for the footer */
+
+
+/* Style for the social media icons */
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px; /* Adjust as needed */
+    text-align: center;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px; /* Adjust spacing between icons */
+}
+
+.social-icons li:last-child {
+    margin-right: 0;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 10px; /* Adjust icon size */
+    height: 10px; /* Adjust icon size */
+    line-height: 20px; /* Adjust icon size */
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #007bff; /* Adjust icon color */
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #0056b3; /* Change color on hover */
+}
