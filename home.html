@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/4-common.css">
+  <link rel="stylesheet" href="styles/3-header.css">
+  <link rel="stylesheet" href="styles/3-footer.css">
+  <link rel="stylesheet" href="styles/6-filters.css">
+  <link rel="stylesheet" href="styles/8-places.css">
+  <link rel="icon" href="images/icon.png" type="image/png">
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-pKiLiRfWGtBEYj3wCnM0MqWLbKtvQ+1t/XxHWSzqY0Q1JgjIz9erCv1Aq5QymNhiHOxpYjKhGObDCdVU1eSHAA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+<style>
+    :root {
+      --bg-color-light: #ffffff; /* Light mode background color */
+      --text-color-light: #333333; /* Light mode text color */
+      --bg-color-dark: #1f1f1f; /* Dark mode background color */
+      --text-color-dark: #eeeeee; /* Dark mode text color */
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+      background-color: var(--bg-color-light); /* Default background color */
+      color: var(--text-color-light); /* Default text color */
+    }
+
+    .container {
+      text-align: center;
+      padding: 10px;
+    }
+
+    button {
+      padding: 3px 5px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    img {
+      max-width: 160px;
+      max-height: 230px;
+      margin-top: 20px;
+    }
+  </style>
+
+  <title>Azi_innova</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <!-- Add content for the logo here -->
+      <!-- Example: <img src="path_to_your_logo" alt="Logo"> -->
+    </div>
+
+  
+
+    <a href="home.html" class="header-link-button">registration</a>
+    <a href="qr.html" class="header-link-button">barcode</a>
+    <a href="db.html" class="header-link-button">db</a>
+    <a href="#header-link" class="header-link-button">service</a>
+    <a href="morce.html" class="header-link-button">seceda</a>
+    <a href="#header-link" class="header-link-button">service</a>
+    <a href="login.html" class="header-link-button">login</a>
+     <a href="sinup.html" class="header-link-button">sigup</a>
+     <a href="about.html" class="header-link-button">about</a>
+
+     <div class="container">
+   
+       <button onclick="toggleMode()">D/L</button>
+       
+  </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button>Search</button>
+    </div>
+  </header>
+ <p date: id="currentDate" ></p>
+ <script src="js/det.js"></script>
+ 
+  <p><span id="time"></span></p>
+  <script src="js/timess.js"></script>
+
+ 
+ 
+  
+
+  
+  <div class="container">
+  
+    <section class="places">
+      <form action="/submit" method="post" enctype="multipart/form-data">
+    <label for="imageUpload">Upload Image:</label>
+    <!--input type="file" id="imageUpload" name="imageUpload" accept="image/*"-->
+
+ <input type="file" id="imageInput" name="imageUpload" accept="image/*">
+  <br>
+  <img id="selectedImage" src="#" alt="Selected Image">
+
+  <script src="js/img.js"></script>
+    
+    <input type="submit" value="Submit">
+  </form>
+      <!-- Place your articles for places here -->
+      <!-- Example: <article> ... </article> -->
+      <form action="/submit" method="post">
+	
+	<label for="id">ID:</label>
+	<input type="text" id="id" name="id" required><br><br>
+	
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required><br><br>
+
+     <label for="midleName">Last Name:</label>
+     <input type="text" id="midleName" name="midleName" required><br><br>
+     
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required><br><br>
+
+    <label for="sex">Sex:</label>
+    <select id="sex">
+  
+       <option value="male">male</option>
+        <option value="female">female</option>
+     </select><br><br>
+     
+       
+
+    <label for="nationality">Choose a Nationality:</label>
+    <select id="nationality">
+        <option value="Ethiopan">Ethiopan</option>
+        <option value="American">American</option>
+        <option value="Canadian">Canadian</option>
+
+	
+<!--
+Mexican
+Brazilian
+Argentinian
+British
+French
+German
+Italian
+Spanish
+Portuguese
+Russian
+Chinese
+Japanese
+Indian
+Australian
+South African
+Nigerian
+Egyptian
+Kenyan -->
+        <!-- Add more nationalities as needed -->
+    </select><br><br>
+    
+     <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required><br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br><br>
+
+    <label for="place">Place:</label>
+    <input type="text" id="place" name="place" required><br><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+    </section>
+
+
+    
+<script>
+    let isDarkMode = false;
+
+    function toggleMode() {
+      const body = document.body;
+      isDarkMode = !isDarkMode;
+
+      if (isDarkMode) {
+        body.style.setProperty('--bg-color-light', '#1f1f1f');
+        body.style.setProperty('--text-color-light', '#eeeeee');
+      } else {
+        body.style.setProperty('--bg-color-light', '#ffffff');
+        body.style.setProperty('--text-color-light', '#333333');
+      }
+    }
+</script>
+
+
+
+<nav>
+ 
+  
+       <link rel="icon" href="images/az.jpg" type="image/png">
+      <!-- Consider moving your section-specific navigation here -->
+      <!-- Example: <ul> ... </ul> -->
+      <div class="gallery">
+  
+   
+    <img src="azi.jpeg"  width="200" height="300">
+
+
+  
+ <p>azi_innova  </p>
+    <ul class="social-icons">
+        <link rel="icon" href="images/icon.png" type="image/png">
+      <li><a href="https://t.me/your_telegram_link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a></li>
+      <li><a href="https://www.facebook.com/your_facebook_page" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+      <!-- Add more social media icons if needed -->
+    </ul>
+    </nav>
+  </div>
+
+<footer>
+  
+  <div class="container text-center">
+      <p>&copy; 2023 Azi_innova . All Rights Reserved.</p>
+    </div>
+   
+    <!-- Additional footer content if needed -->
+  </footer>
+</body>
+</html>

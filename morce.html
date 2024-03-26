@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/4-common.css">
+  <link rel="stylesheet" href="styles/3-header.css">
+  <link rel="stylesheet" href="styles/3-footer.css">
+  <link rel="stylesheet" href="styles/6-filters.css">
+  <link rel="stylesheet" href="styles/8-places.css">
+  <link rel="icon" href="images/icon.png" type="image/png">
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-pKiLiRfWGtBEYj3wCnM0MqWLbKtvQ+1t/XxHWSzqY0Q1JgjIz9erCv1Aq5QymNhiHOxpYjKhGObDCdVU1eSHAA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/openpgp/4.10.10/openpgp.min.js"></script>
+ <script src="js/encription.js"></script>
+  <title>Azi_innova</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <!-- Add content for the logo here -->
+      <!-- Example: <img src="path_to_your_logo" alt="Logo"> -->
+    </div>
+
+  
+  <a href="home.html" class="header-link-button">registration</a>
+    <a href="#header-link" class="header-link-button">barcode</a>
+    <a href="db.html" class="header-link-button">db</a>
+    <a href="#header-link" class="header-link-button">service</a>
+    <a href="morce.html" class="header-link-button">seceda</a>
+    <a href="#header-link" class="header-link-button">service</a>
+    <a href="login.html" class="header-link-button">login</a>
+     <a href="#header-link" class="header-link-button">sigup</a>
+     <a href="about.html" class="header-link-button">about</a>
+
+   
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button>Search</button>
+    </div>
+  </header>
+
+ 
+    <h1>Morse Code Converter</h1>
+  <input type="text" id="inputText" placeholder="Enter text to convert" autofocus>
+  <br>
+  <button id="convertBtn" onclick="convertToMorse()">Convert to Morse Code</button>
+  <br>
+  <textarea id="morseResult" placeholder="Morse code will appear here" readonly></textarea>
+ <script src="js/morce.js"></script>
+  
+  
+  
+  
+
+
+
+  <h1>Encryption Key Generator</h1>
+   <input type="text" id="inputText" placeholder="Enter text to convert" autofocus>
+ 
+  <button id="generateBtn" onclick="generateKey()">Generate Key</button>
+  <br>
+  <input type="text" id="keyDisplay" placeholder="Generated Key" readonly>
+
+
+
+
+ <h1>PGP Encryption </h1>
+
+  <textarea id="plainText" rows="5" cols="50" placeholder="Enter text to encrypt"></textarea>
+  <br>
+  <button onclick="encrypt()">Encrypt</button>
+  <br>
+  <textarea id="encryptedText" rows="5" cols="50" placeholder="Encrypted text will appear here" readonly></textarea>
+
+  <script>
+    async function encrypt() {
+      const publicKeyArmored = `-----BEGIN PGP PUBLIC KEY BLOCK-----
+      ... // Paste the recipient's public key here
+      -----END PGP PUBLIC KEY BLOCK-----`;
+
+      const options = {
+        message: await openpgp.message.fromText(document.getElementById('plainText').value),
+        publicKeys: (await openpgp.key.readArmored(publicKeyArmored)).keys
+      };
+
+      openpgp.encrypt(options).then(ciphertext => {
+        document.getElementById('encryptedText').value = ciphertext.data;
+      }).catch(error => {
+        console.error('Encryption failed:', error);
+      });
+    }
+  </script>
+
+
+   <h1>Hieroglyphic Encryption</h1>
+  <input type="text" id="inputText" placeholder="Enter text to encrypt">
+  <br>
+  <button id="encryptBtn" onclick="encryptText()">Encrypt</button>
+  <br>
+  <div id="encryptedText"></div>
+
+  <script>
+    function encryptText() {
+      const inputText = document.getElementById('inputText').value;
+
+      let encryptedText = '';
+      for (let i = 0; i < inputText.length; i++) {
+        const charCode = inputText.charCodeAt(i);
+        const hieroglyph = getHieroglyph(charCode);
+        encryptedText += hieroglyph !== '' ? hieroglyph : inputText.charAt(i);
+      }
+
+      document.getElementById('encryptedText').innerHTML = encryptedText;
+    }
+
+    function getHieroglyph(charCode) {
+      // Example mapping of ASCII characters to Egyptian Hieroglyphs
+      if (charCode >= 65 && charCode <= 90) {
+        return '&#x13000;'; // Capital letter 'A'
+      } else if (charCode >= 97 && charCode <= 122) {
+        return '&#x13001;'; // Small letter 'a'
+      }
+      // Add more mappings as needed for other characters
+
+      return ''; // Return empty string if there's no mapping
+    }
+  </script>
+
+
+   <h1>Decimal to Binary Converter</h1>
+  <input type="number" id="decimalInput" placeholder="Enter a decimal number">
+  <br>
+  <button id="convertBtn" onclick="convertToBinary()">Convert to Binary</button>
+  <br>
+  <div id="binaryOutput"></div>
+
+  <script>
+    function convertToBinary() {
+      const decimalValue = parseInt(document.getElementById('decimalInput').value);
+
+      if (isNaN(decimalValue)) {
+        document.getElementById('binaryOutput').innerText = 'Please enter a valid decimal number!';
+        return;
+      }
+
+      const binaryValue = decimalValue.toString(2);
+      document.getElementById('binaryOutput').innerText = `Binary value: ${binaryValue}`;
+    }
+  </script>
+
+
+
+  
+
+  <h1>Bit Converter</h1>
+  <input type="text" id="bitInput" placeholder="Enter a sequence of 0s and 1s">
+  <br>
+  <button id="convertBtn" onclick="convertToDecimal()">Convert to Decimal</button>
+  <br>
+  <div id="decimalOutput"></div>
+
+  <script>
+    function convertToDecimal() {
+      const bitSequence = document.getElementById('bitInput').value.trim();
+
+      if (!isValidBitSequence(bitSequence)) {
+        document.getElementById('decimalOutput').innerText = 'Invalid bit sequence!';
+        return;
+      }
+
+      const decimalValue = parseInt(bitSequence, 2);
+      document.getElementById('decimalOutput').innerText = `Decimal value: ${decimalValue}`;
+    }
+
+    function isValidBitSequence(bits) {
+      return /^[01]+$/.test(bits);
+    }
+  </script>
+  
+    <nav>
+      <!-- Consider moving your section-specific navigation here -->
+      <!-- Example: <ul> ... </ul> -->
+  <h1>English to Amharic Dictionary</h1>
+
+  <label for="searchWord">Search for an English word:</label>
+  <input type="text" id="searchWord" placeholder="Enter an English word">
+  <button onclick="searchDictionary()">Search</button>
+
+  <p id="result"></p>
+
+  <script>
+    const dictionary = {
+      "hello": "ሰላም",
+      "goodbye": "መልካም",
+      "cat": "ድመት",
+      "dog": "መካከለኛ",
+      "house": "ቤት",
+      "tree": "አምስት",
+      "book": "መጽሐፍ",
+      "computer": "ኮምፒተር",
+      "sun": "ምሽት",
+      "moon": "ጨቋኝ"
+      // Add more words as needed
+    };
+
+    function searchDictionary() {
+      const searchWord = document.getElementById('searchWord').value.toLowerCase();
+      const result = document.getElementById('result');
+      
+      if (dictionary.hasOwnProperty(searchWord)) {
+        result.textContent = `Amharic translation of "${searchWord}" is "${dictionary[searchWord]}".`;
+      } else {
+        result.textContent = `Word not found in the dictionary.`;
+      }
+    }
+  </script>
+
+
+  
+    </nav>
+  </div>
+
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2023 Azi_innova . All Rights Reserved.</p>
+    </div>
+    <!-- Additional footer content if needed -->
+  </footer>
+</body>
+</html>

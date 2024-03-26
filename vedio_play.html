@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/4-common.css">
+  <link rel="stylesheet" href="styles/3-header.css">
+  <link rel="stylesheet" href="styles/3-footer.css">
+  <link rel="stylesheet" href="styles/6-filters.css">
+  <link rel="stylesheet" href="styles/8-places.css">
+  <link rel="icon" href="images/icon.png" type="image/png">
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-pKiLiRfWGtBEYj3wCnM0MqWLbKtvQ+1t/XxHWSzqY0Q1JgjIz9erCv1Aq5QymNhiHOxpYjKhGObDCdVU1eSHAA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<title>azi_innova</title>
+ <style>
+        /* Add styles for the video/audio player and controls */
+        #media-player {
+            width: 50%;
+            margin: 20px auto;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <!-- Add content for the logo here -->
+      <!-- Example: <img src="path_to_your_logo" alt="Logo"> -->
+    </div>
+
+  
+
+  
+    <a href="home.html" class="header-link-button">registration</a>
+    <a href="qr.html" class="header-link-button">barcode</a>
+    <a href="db.html" class="header-link-button">db</a>
+    <a href="#header-link" class="header-link-button">service</a>
+    <a href="morce.html" class="header-link-button">seceda</a>
+    <a href="#header-link" class="header-link-button">service</a>
+    <a href="login.html" class="header-link-button">login</a>
+     <a href="sinup.html" class="header-link-button">sigup</a>
+     <a href="about.html" class="header-link-button">about</a>
+
+   
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button>Search</button>
+    </div>
+  </header>
+
+ 
+    </section>
+
+<nav>
+  <h1>Video/Audio Player with Open File and All Format Support</h1>
+    <input type="file" id="file-input" accept="video/*, audio/*">
+    <video id="media-player" controls>
+        <source id="media-source" src="" type="">
+        Your browser does not support the video/audio tag.
+    </video>
+    <div>
+        <button onclick="playPause()">Play/Pause</button>
+        <button onclick="muteUnmute()">Mute/Unmute</button>
+        <input type="range" id="volume-control" min="0" max="1" step="0.1" value="1" onchange="setVolume()">
+        <button onclick="boostAudio()">Boost Audio</button>
+    </div>
+
+    <script>
+        const media = document.getElementById('media-player');
+        const volumeControl = document.getElementById('volume-control');
+        const fileInput = document.getElementById('file-input');
+
+        fileInput.addEventListener('change', function() {
+            const file = fileInput.files[0];
+            const mediaSource = document.getElementById('media-source');
+
+            if (file) {
+                const objectURL = URL.createObjectURL(file);
+                mediaSource.src = objectURL;
+                media.load();
+            }
+        });
+
+        function playPause() {
+            if (media.paused) {
+                media.play();
+            } else {
+                media.pause();
+            }
+        }
+
+        function muteUnmute() {
+            media.muted = !media.muted;
+        }
+
+        function setVolume() {
+            media.volume = volumeControl.value;
+            media.muted = false;
+        }
+
+        function boostAudio() {
+            if (media.volume + 0.2 <= 1) {
+                media.volume += 0.2;
+            } else {
+                media.volume = 1;
+            }
+        }
+    </script>
+      <!-- Consider moving your section-specific navigation here -->
+      <!-- Example: <ul> ... </ul> -->
+  
+    </nav>
+  </div>
+
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2023 Azi_innova . All Rights Reserved.</p>
+    </div>
+    <!-- Additional footer content if needed -->
+  </footer>
+</body>
+</html>
